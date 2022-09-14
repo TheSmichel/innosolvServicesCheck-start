@@ -20,3 +20,9 @@ for /F "tokens=3 delims=: " %%H in ('sc query "innopluginservice" ^| findstr "ST
    net start innopluginservice
   ) 
 )
+
+for /F "tokens=3 delims=: " %%H in ('sc query "innowebservice" ^| findstr "STATE"') do (
+  if /I "%%H" NEQ "RUNNING" (
+   net start innowebservice
+  ) 
+)
